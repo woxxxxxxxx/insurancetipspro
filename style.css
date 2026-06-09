@@ -361,3 +361,65 @@ img{max-width:100%;height:auto}
 /* ABOUT / CONTACT CTA FIX */
 .cta-btn-inline{display:inline-block;background:var(--orange);color:#fff;font-weight:700;padding:13px 28px;border-radius:8px;text-decoration:none;transition:background .15s}
 .cta-btn-inline:hover{background:var(--orange-dark);color:#fff;text-decoration:none}
+
+/* ── V3 IMPROVEMENTS 2026 ────────────────────────────────────────── */
+
+/* LOGO IMG */
+.site-logo img{display:block;height:36px;width:auto}
+
+/* HERO LIGHT BACKGROUND */
+.hero{background:#f0f4f8}
+
+/* CATEGORY NAV DOTS */
+.cat-nav a::before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px;vertical-align:middle;flex-shrink:0}
+.cat-nav a[href="#auto"]::before{background:#3b82f6}
+.cat-nav a[href="#life"]::before{background:#10b981}
+.cat-nav a[href="#health"]::before{background:#f43f5e}
+.cat-nav a[href="#home"]::before{background:#f59e0b}
+.cat-nav a[href="#business"]::before{background:#8b5cf6}
+.cat-nav a[href="#fundamentals"]::before{background:#6366f1}
+.cat-nav a[href="#specialty"]::before{background:#06b6d4}
+
+/* FEATURED CARD LEFT ACCENT */
+.featured-main{border-left:4px solid var(--blue)}
+.featured-small{border-left:4px solid var(--blue)}
+
+/* WHY TRUST US */
+.why-trust{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:48px 0}
+.why-trust-item{text-align:center;padding:30px 22px;background:#f8fafc;border:1px solid var(--border);border-radius:14px;transition:box-shadow .15s}
+.why-trust-item:hover{box-shadow:var(--shadow-md)}
+.why-trust-icon{font-size:2.2rem;margin-bottom:12px}
+.why-trust-item h3{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:8px}
+.why-trust-item p{font-size:.88rem;color:var(--text2);line-height:1.65}
+@media(max-width:640px){.why-trust{grid-template-columns:1fr}}
+
+/* NEWSLETTER DARK */
+.newsletter-section{background:var(--navy);border:none;color:#fff}
+.newsletter-section h2{color:#fff}
+.newsletter-section p{color:rgba(255,255,255,.78)}
+.newsletter-form input{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.28);color:#fff}
+.newsletter-form input::placeholder{color:rgba(255,255,255,.45)}
+.newsletter-form input:focus{border-color:rgba(255,255,255,.6);box-shadow:none}
+
+/* ARTICLE SECTION DIVIDERS */
+.article-body h2::before{content:'';display:block;width:36px;height:3px;background:var(--blue);border-radius:2px;margin-bottom:.65em}
+
+/* STAT CALLOUT BOX */
+.stat-callout{background:#fef9c3;border:1px solid #fde047;border-radius:12px;padding:22px 24px;margin:24px 0;text-align:center}
+.stat-callout .stat-number{font-size:2.2rem;font-weight:800;color:#92400e;line-height:1;display:block}
+.stat-callout .stat-label{font-size:.9rem;color:#713f12;margin-top:6px;display:block}
+
+/* WAS THIS HELPFUL */
+.helpful-widget{text-align:center;padding:32px 0 8px;border-top:1px solid var(--border);margin-top:44px}
+.helpful-widget>p{font-size:1rem;color:var(--text2);font-weight:600;margin-bottom:16px}
+.helpful-buttons{display:flex;justify-content:center;gap:12px}
+.helpful-btn{background:#fff;border:1.5px solid var(--border);padding:10px 24px;border-radius:8px;cursor:pointer;font-size:.92rem;font-weight:600;color:var(--text2);transition:all .15s;font-family:inherit}
+.helpful-btn:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-light)}
+.helpful-btn.voted{background:var(--blue-light);border-color:var(--blue);color:var(--blue)}
+.helpful-msg{color:#16a34a;font-size:.9rem;font-weight:600;margin-top:14px!important}
+
+/* PICSUM IMAGE SIZING */
+.article-hero-img{width:100%;max-width:720px;height:300px;object-fit:cover;border-radius:12px;margin:20px 0 24px;display:block}
+.featured-img-real{width:100%;height:220px;object-fit:cover;display:block}
+.featured-small-img{width:100%;height:150px;object-fit:cover;display:block;border-radius:8px 8px 0 0;margin:-18px -18px 14px;width:calc(100% + 36px)}
+.team-photo{width:100%;height:260px;object-fit:cover;border-radius:12px;margin-bottom:20px;display:block}

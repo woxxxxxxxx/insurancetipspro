@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="InsuranceTipsPro">
+  <!-- Shield -->
+  <path d="M16 1 L29 6 L29 20 Q29 29 16 32 Q3 29 3 20 L3 6 Z" fill="#1a2744"/>
+  <!-- Checkmark -->
+  <path d="M9 17 L14 23 L23 12" stroke="white" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
