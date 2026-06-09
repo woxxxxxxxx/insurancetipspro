@@ -423,3 +423,13 @@ img{max-width:100%;height:auto}
 .featured-img-real{width:100%;height:220px;object-fit:cover;display:block}
 .featured-small-img{width:100%;height:150px;object-fit:cover;display:block;border-radius:8px 8px 0 0;margin:-18px -18px 14px;width:calc(100% + 36px)}
 .team-photo{width:100%;height:260px;object-fit:cover;border-radius:12px;margin-bottom:20px;display:block}
+
+/* ── PAGINATION ──────────────────────────────────────────────────── */
+.pagination{display:flex;justify-content:center;align-items:center;gap:8px;padding:28px 0 12px;flex-wrap:wrap}
+.page-link{display:inline-flex;align-items:center;justify-content:center;min-width:42px;height:42px;padding:0 14px;border:1.5px solid var(--border);border-radius:8px;font-size:.9rem;font-weight:600;color:var(--text2);text-decoration:none;transition:all .15s;background:#fff}
+.page-link:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-light);text-decoration:none}
+.page-link.active{background:var(--blue);border-color:var(--blue);color:#fff}
+.page-link.active:hover{background:var(--blue-dark);text-decoration:none}
+.page-link.disabled{opacity:.35;cursor:default;pointer-events:none}
+.page-link.prev,.page-link.next{font-size:.85rem;padding:0 16px}
+.page-info{font-size:.85rem;color:var(--text3);text-align:center;margin-bottom:4px}
