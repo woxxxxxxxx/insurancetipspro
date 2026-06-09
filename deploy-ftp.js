@@ -24,8 +24,8 @@ async function uploadDir(client, localDir, remoteDir) {
 }
 
 async function deploy() {
-  const client = new ftp.Client();
-  client.ftp.verbose = false;
+  const client = new ftp.Client(30000);
+  client.ftp.verbose = true;
   try {
     const socket = await new Promise((resolve, reject) => {
       const s = net.createConnection({ host: '127.0.0.1', port: 7897 }, () => {
@@ -50,7 +50,8 @@ async function deploy() {
       user: 'u868313694.insurancetipspro.com',
       password: 'Xxh113324~',
       port: 21,
-      secure: false,
+      secure: true,
+      secureOptions: { rejectUnauthorized: false },
       socket: socket
     });
     console.log('Connected via proxy');
