@@ -451,5 +451,6 @@ img{max-width:100%;height:auto}
 .hero-real-img{width:100%;border-radius:16px;object-fit:cover;height:280px;box-shadow:var(--shadow-md);display:block;margin-bottom:16px}
 
 /* AD SLOTS */
-.ad-unit{margin:24px 0;text-align:center;overflow:hidden}
-.sidebar .ad-unit{margin:16px 0}
+.ad-unit{margin:24px 0;text-align:center;overflow:hidden;background:#f8fafc;border:2px dashed #d1d5db;border-radius:8px;padding:28px 16px;color:#9ca3af;font-size:13px;font-weight:500;letter-spacing:.5px;text-transform:uppercase}
+.ad-unit::before{content:'Advertisement';display:block}
+.sidebar .ad-unit{margin:16px 0;padding:20px 12px}
