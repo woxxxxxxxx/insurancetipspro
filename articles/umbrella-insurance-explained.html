@@ -9,8 +9,11 @@
 <link rel="stylesheet" href="../style.css">
 <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','GA_MEASUREMENT_ID');</script>
+<!-- REDESIGN-2025 -->
 </head>
 <body>
+<div id="read-progress"></div>
+
 <header class="site-header">
   <div class="header-inner">
     <a href="/" class="site-logo">Insurance<span>Tips</span>Pro</a>
@@ -30,7 +33,15 @@
         <h1>Umbrella Insurance Explained: Extra Protection for Everything</h1>
         <div class="article-meta"><span class="author">By InsuranceTipsPro Editorial Team</span><span>May 23, 2025</span><span>6 min read</span></div>
       </div>
-      <div class="toc"><h4>Table of Contents</h4><ol>
+      <div class="author-box">
+  <div class="author-avatar-sm">IT</div>
+  <div class="author-info">
+    <strong>InsuranceTipsPro Editorial Team</strong>
+    <span>Last Updated: June 2025 &bull; <span class="author-badge">Reviewed for accuracy</span></span>
+  </div>
+</div>
+<div class="article-disclaimer">This article is for educational purposes. Rates and coverage vary by state and insurer. Consult a licensed insurance professional for personalized advice.</div>
+<div class="toc"><h4>Table of Contents</h4><ol>
         <li><a href="#what-is">What Is Umbrella Insurance?</a></li>
         <li><a href="#how-works">How It Works</a></li>
         <li><a href="#what-covers">What Umbrella Insurance Covers</a></li>
@@ -145,7 +156,7 @@
       </div>
     </article>
 
-    <aside class="sidebar">
+    <aside class="sidebar"><div class="sidebar-sticky">
       <div class="sidebar-widget">
         <h3>Related Articles</h3>
         <div class="related-post"><div class="related-post-num">1</div><div><a href="/articles/what-is-liability-insurance.html">What Is Liability Insurance?</a></div></div>
@@ -154,12 +165,12 @@
         <div class="related-post"><div class="related-post-num">4</div><div><a href="/articles/renters-insurance-worth-it.html">Is Renters Insurance Worth It?</a></div></div>
         <div class="related-post"><div class="related-post-num">5</div><div><a href="/articles/business-insurance-types.html">Business Insurance Types</a></div></div>
       </div>
-      <div class="sidebar-widget" style="background:#eff6ff;">
-        <h3>Free Calculators</h3>
-        <p style="font-size:0.88rem;margin-bottom:14px;">Find out how much liability coverage your net worth requires.</p>
-        <a href="https://coveragefixpro.com" target="_blank" rel="noopener" style="display:block;background:var(--primary);color:#fff;text-align:center;padding:10px;border-radius:8px;font-weight:700;font-size:0.9rem;">Try Free Tools</a>
-      </div>
-    </aside>
+      <div class="sidebar-cta">
+  <h3>Free Quote Tools</h3>
+  <p>Estimate your costs and find the right coverage options for free.</p>
+  <a href="https://coveragefixpro.com" target="_blank" rel="noopener">Try Free Calculators &rarr;</a>
+</div>
+    </div></aside>
   </div>
 </main>
 <footer class="site-footer">
@@ -170,7 +181,10 @@
       <div class="footer-col"><h4>Life &amp; Health</h4><ul><li><a href="/articles/term-life-vs-whole-life-insurance.html">Term vs. Whole Life</a></li><li><a href="/articles/how-much-life-insurance-do-i-need.html">How Much Life Insurance?</a></li><li><a href="/articles/health-insurance-deductible-explained.html">Deductibles Explained</a></li></ul></div>
       <div class="footer-col"><h4>Resources</h4><ul><li><a href="/articles/insurance-terms-glossary.html">Insurance Glossary</a></li><li><a href="/articles/how-to-compare-insurance-quotes.html">Compare Quotes</a></li><li><a href="https://coveragefixpro.com" target="_blank" rel="noopener">Free Calculators</a></li></ul></div>
     </div>
-    <div class="footer-bottom">
+    <div class="footer-editorial">
+  <p><strong>Editorial Independence:</strong> InsuranceTipsPro editorial content is not influenced by advertisers. Our guides are written independently to help consumers make informed decisions.</p>
+</div>
+<div class="footer-bottom">
       <p>&copy; 2025 InsuranceTipsPro.com. All rights reserved.</p>
       <p class="footer-disclaimer">InsuranceTipsPro provides educational content only. Consult a licensed insurance professional for advice.</p>
     </div>
@@ -179,6 +193,27 @@
 <script>
 document.getElementById('navToggle').addEventListener('click',()=>document.getElementById('mainNav').classList.toggle('open'));
 document.querySelectorAll('.faq-question').forEach(btn=>{btn.addEventListener('click',()=>{btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');});});
+</script>
+<script>
+(function(){
+  var body=document.querySelector('.article-body');
+  if(!body)return;
+  var paras=body.querySelectorAll('p');
+  var target=paras.length>=3?paras[2]:paras[paras.length-1];
+  if(!target)return;
+  var cta=document.createElement('div');
+  cta.className='inline-cta';
+  cta.innerHTML='<div class="inline-cta-text"><strong>Need to compare insurance options?</strong><span>Use our free calculators to estimate costs and find the right coverage for your situation.</span></div><a href="https://coveragefixpro.com" target="_blank" rel="noopener" class="btn-orange-sm">Free Quote Tools &rarr;</a>';
+  target.parentNode.insertBefore(cta,target.nextSibling);
+})();
+</script>
+<script>
+(function(){
+  var bar=document.getElementById('read-progress');
+  if(!bar)return;
+  function upd(){var s=document.documentElement;bar.style.width=Math.min(s.scrollTop/(s.scrollHeight-s.clientHeight)*100,100)+'%';}
+  window.addEventListener('scroll',upd,{passive:true});
+})();
 </script>
 </body>
 </html>
