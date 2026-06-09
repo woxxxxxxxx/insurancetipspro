@@ -327,6 +327,16 @@ img{max-width:100%;height:auto}
 .article-hero-img{width:100%;max-width:720px;height:300px;object-fit:cover;border-radius:12px;margin:20px 0 24px;display:block;background:var(--bg2)}
 .article-hero-img-wrap{margin:20px 0 24px;border-radius:12px;overflow:hidden;max-width:720px;height:300px;background:linear-gradient(135deg,#dbeafe,#eff6ff)}
 
+/* FEATURED CARD EXTRAS */
+.featured-extras{margin-top:18px;display:flex;flex-direction:column;gap:16px}
+.quick-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.quick-stat{background:#f8fafc;border-radius:10px;padding:10px 12px;text-align:center}
+.quick-stat .qs-val{display:block;font-size:.92rem;font-weight:800;color:var(--navy);line-height:1.2;margin-bottom:3px}
+.quick-stat .qs-lbl{display:block;font-size:.7rem;color:var(--text3);line-height:1.3}
+.learn-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px}
+.learn-list li{font-size:.84rem;color:var(--text2);display:flex;align-items:flex-start;gap:7px;line-height:1.45}
+.learn-list li::before{content:'✓';color:var(--blue);font-weight:800;font-size:.85rem;flex-shrink:0;margin-top:1px}
+
 /* FEATURED IMAGE (homepage) */
 .featured-img-real{width:100%;height:300px;object-fit:cover;display:block;border-radius:14px 14px 0 0}
 .featured-small-img{width:100%;height:220px;object-fit:cover;display:block;border-radius:12px 12px 0 0;margin:-18px -18px 14px;width:calc(100% + 36px)}
