@@ -1,0 +1,7 @@
+{
+  "name": "insurancetipspro",
+  "version": "1.0.0",
+  "dependencies": {
+    "basic-ftp": "^6.0.1"
+  }
+}
