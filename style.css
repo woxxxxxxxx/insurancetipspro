@@ -449,3 +449,7 @@ img{max-width:100%;height:auto}
 
 /* HERO REAL IMAGE */
 .hero-real-img{width:100%;border-radius:16px;object-fit:cover;height:280px;box-shadow:var(--shadow-md);display:block;margin-bottom:16px}
+
+/* AD SLOTS */
+.ad-unit{margin:24px 0;text-align:center;overflow:hidden}
+.sidebar .ad-unit{margin:16px 0}
