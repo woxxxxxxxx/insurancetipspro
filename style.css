@@ -20,7 +20,7 @@
   --shadow-md:0 4px 16px rgba(0,0,0,.08);
 }
 
-body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:18px;color:var(--text);background:var(--bg);line-height:1.8}
+body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:17px;color:var(--text);background:var(--bg);line-height:1.8}
 a{color:var(--blue);text-decoration:none}
 a:hover{text-decoration:underline}
 img{max-width:100%;height:auto}
@@ -92,7 +92,7 @@ img{max-width:100%;height:auto}
 .featured-img{background:linear-gradient(135deg,#dbeafe 0%,#eff6ff 100%);height:200px;display:flex;align-items:center;justify-content:center;color:var(--blue);font-size:2.5rem}
 .featured-body{padding:24px;flex:1;display:flex;flex-direction:column}
 .featured-side{display:flex;flex-direction:column;gap:14px}
-.featured-small{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:18px;display:flex;flex-direction:column;flex:1}
+.featured-small{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:18px;display:flex;flex-direction:column;flex:1;overflow:hidden}
 .cat-tag{display:inline-block;font-size:.72rem;font-weight:700;color:var(--blue);background:var(--blue-light);padding:3px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;text-decoration:none}
 .cat-tag:hover{background:#dbeafe;text-decoration:none}
 .featured-main h2{font-family:Georgia,serif;font-size:1.4rem;font-weight:700;color:var(--navy);line-height:1.3;margin-bottom:10px}
@@ -155,10 +155,10 @@ img{max-width:100%;height:auto}
 .article-disclaimer::before{content:'ℹ';flex-shrink:0;font-size:.9rem}
 
 /* ARTICLE BODY */
-.article-body{font-size:1rem;line-height:1.85;color:var(--text);max-width:760px}
+.article-body{font-size:19px;line-height:1.85;color:var(--text);max-width:720px}
 .article-body h2{font-family:Georgia,serif;font-size:1.45rem;font-weight:700;margin:40px 0 14px;color:var(--navy)}
 .article-body h3{font-size:1.1rem;font-weight:700;margin:28px 0 10px;color:var(--navy)}
-.article-body p{margin-bottom:20px}
+.article-body p{margin-bottom:1.5em}
 .article-body ul,.article-body ol{margin:0 0 20px 24px}
 .article-body li{margin-bottom:8px}
 .article-body strong{color:var(--navy)}
@@ -306,3 +306,58 @@ img{max-width:100%;height:auto}
   .content-grid{gap:32px}
   .container{padding:0 16px}
 }
+
+/* ── IMPROVEMENTS 2025 ─────────────────────────────────────────── */
+
+/* BACK TO TOP */
+#back-to-top{position:fixed;bottom:28px;right:28px;width:46px;height:46px;border-radius:50%;background:var(--orange);color:#fff;border:none;cursor:pointer;font-size:1.3rem;line-height:1;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(234,88,12,.4);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:200;font-family:inherit}
+#back-to-top.visible{opacity:1;pointer-events:auto}
+#back-to-top:hover{background:var(--orange-dark);transform:translateY(-3px)}
+
+/* KEY TAKEAWAYS BOX */
+.key-takeaways{background:#eff6ff;border:1px solid #bfdbfe;border-left:4px solid var(--blue);border-radius:0 12px 12px 0;padding:22px 26px;margin:0 0 28px}
+.key-takeaways h4{font-size:.82rem;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.8px;margin-bottom:12px;display:flex;align-items:center;gap:6px}
+.key-takeaways h4::before{content:'★';font-size:.9rem}
+.key-takeaways ul{list-style:none;margin:0;padding:0}
+.key-takeaways li{font-size:.95rem;color:var(--navy);padding:5px 0 5px 18px;position:relative;line-height:1.55;border-bottom:1px solid rgba(37,99,235,.1)}
+.key-takeaways li:last-child{border-bottom:none}
+.key-takeaways li::before{content:'→';position:absolute;left:0;color:var(--blue);font-weight:700;font-size:.85rem}
+
+/* ARTICLE HERO IMAGE */
+.article-hero-img{width:100%;max-width:720px;height:300px;object-fit:cover;border-radius:12px;margin:20px 0 24px;display:block;background:var(--bg2)}
+.article-hero-img-wrap{margin:20px 0 24px;border-radius:12px;overflow:hidden;max-width:720px;height:300px;background:linear-gradient(135deg,#dbeafe,#eff6ff)}
+
+/* FEATURED IMAGE (homepage) */
+.featured-img-real{width:100%;height:200px;object-fit:cover;display:block;background:var(--bg2)}
+.featured-small-img{width:100%;height:140px;object-fit:cover;display:block;border-radius:8px 8px 0 0;margin:-18px -18px 14px;width:calc(100% + 36px)}
+
+/* LIST ITEM THUMBNAIL */
+.list-thumb{width:80px;height:60px;object-fit:cover;border-radius:8px;flex-shrink:0;background:var(--bg2)}
+.list-item-inner{display:flex;gap:14px;align-items:flex-start}
+
+/* CALLOUT VARIANTS */
+.callout-tip{background:#f0fdf4;border-left:4px solid #16a34a;border-radius:0 8px 8px 0;padding:15px 18px;margin:24px 0}
+.callout-tip p{margin:0;color:#14532d;font-size:.95rem}
+.callout-tip::before{content:'Tip: ';font-weight:700;color:#16a34a}
+.callout-stat{background:#fefce8;border-left:4px solid #ca8a04;border-radius:0 8px 8px 0;padding:15px 18px;margin:24px 0}
+.callout-stat p{margin:0;color:#713f12;font-size:.95rem}
+.callout-warning{background:#fff7ed;border-left:4px solid var(--orange);border-radius:0 8px 8px 0;padding:15px 18px;margin:24px 0}
+.callout-warning p{margin:0;color:#9a3412;font-size:.95rem}
+
+/* ALTERNATING SECTIONS (homepage) */
+.section-alt{background:#f8f9fa;margin:0 -24px;padding:48px 24px;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.section-alt .section-title{margin-top:0}
+
+/* TEAM PHOTO (about) */
+.team-photo{width:100%;height:280px;object-fit:cover;border-radius:12px;margin-bottom:8px;display:block;background:var(--bg2)}
+.team-photo-caption{font-size:.8rem;color:var(--text3);text-align:center;margin-bottom:20px}
+
+/* ARTICLE BODY SPACING IMPROVEMENTS */
+.article-body h2{margin-top:2.2em}
+.article-body h3{margin-top:1.8em}
+.article-body ul,.article-body ol{margin-bottom:1.5em}
+.article-body li{margin-bottom:10px;line-height:1.7}
+
+/* ABOUT / CONTACT CTA FIX */
+.cta-btn-inline{display:inline-block;background:var(--orange);color:#fff;font-weight:700;padding:13px 28px;border-radius:8px;text-decoration:none;transition:background .15s}
+.cta-btn-inline:hover{background:var(--orange-dark);color:#fff;text-decoration:none}

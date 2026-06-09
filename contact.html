@@ -83,9 +83,9 @@
       </div>
 
       <div class="content-section" style="background:#eff6ff;">
-        <h2 style="color:var(--primary-dark);">Need a Calculator?</h2>
+        <h2 style="color:var(--navy);">Need a Calculator?</h2>
         <p style="margin-bottom:16px;">For quick insurance estimates, check our free tools at CoverageFixPro.com.</p>
-        <a href="https://coveragefixpro.com" target="_blank" rel="noopener" style="display:inline-block;background:var(--primary);color:#fff;font-weight:700;padding:10px 20px;border-radius:8px;font-size:0.9rem;">Free Insurance Calculators &rarr;</a>
+        <a href="https://coveragefixpro.com" target="_blank" rel="noopener" style="display:inline-block;background:var(--orange);color:#fff;font-weight:700;padding:10px 20px;border-radius:8px;font-size:0.9rem;">Free Insurance Calculators &rarr;</a>
       </div>
     </div>
 
@@ -118,9 +118,11 @@
     </div>
   </div>
 </footer>
+<button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&#8679;</button>
 <script>
 document.getElementById('navToggle').addEventListener('click',()=>document.getElementById('mainNav').classList.toggle('open'));
 function handleSubmit(e){e.preventDefault();e.target.style.display='none';document.getElementById('form-success').style.display='block';}
+window.addEventListener('scroll',function(){document.getElementById('back-to-top').classList.toggle('visible',window.scrollY>300);});
 </script>
 </body>
 </html>

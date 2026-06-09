@@ -34,6 +34,7 @@
 
     <div class="content-section">
       <h2>Who We Are</h2>
+      <img src="https://source.unsplash.com/800x320/?office,team,working" alt="InsuranceTipsPro editorial team" class="team-photo" loading="lazy" style="width:100%;border-radius:12px;margin-bottom:20px;">
       <p>InsuranceTipsPro is an independent insurance education website dedicated to helping everyday consumers navigate the complex world of insurance. We believe that understanding your coverage options shouldn't require a law degree or a financial advisor — it should be straightforward, clear, and free.</p>
       <p>Our team of writers and researchers has decades of combined experience in the insurance industry. We write guides, comparisons, and explainers that cut through the jargon and give you the practical information you need to protect yourself, your family, and your assets.</p>
     </div>
@@ -69,7 +70,7 @@
       <h2>Free Insurance Calculators</h2>
       <p>We partner with <a href="https://coveragefixpro.com" target="_blank" rel="noopener">CoverageFixPro.com</a> to offer free insurance calculators that help you estimate premiums, compare coverage levels, and optimize your deductibles. These tools are completely free and require no registration.</p>
       <div style="text-align:center;margin-top:24px;">
-        <a href="https://coveragefixpro.com" target="_blank" rel="noopener" class="cta-btn" style="display:inline-block;background:var(--primary);color:#fff;font-weight:700;padding:13px 28px;border-radius:8px;">Explore Free Calculators &rarr;</a>
+        <a href="https://coveragefixpro.com" target="_blank" rel="noopener" class="cta-btn" style="display:inline-block;background:var(--orange);color:#fff;font-weight:700;padding:13px 28px;border-radius:8px;">Explore Free Calculators &rarr;</a>
       </div>
     </div>
 
@@ -113,6 +114,10 @@
     </div>
   </div>
 </footer>
-<script>document.getElementById('navToggle').addEventListener('click',()=>document.getElementById('mainNav').classList.toggle('open'));</script>
+<button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&#8679;</button>
+<script>
+document.getElementById('navToggle').addEventListener('click',()=>document.getElementById('mainNav').classList.toggle('open'));
+window.addEventListener('scroll',function(){document.getElementById('back-to-top').classList.toggle('visible',window.scrollY>300);});
+</script>
 </body>
 </html>
