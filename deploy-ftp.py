@@ -6,12 +6,12 @@ PROXY = "http://127.0.0.1:7897"
 FTP_HOST = "212.85.28.149"
 FTP_USER = "u868313694.insurancetipspro.com"
 FTP_PASS = "Xxh113324~"
-REMOTE_BASE = "/public_html"
+REMOTE_BASE = ""
 LOCAL_DIR = os.path.dirname(os.path.abspath(__file__))
 
 EXCLUDE = {
     'node_modules', '.git', 'deploy-ftp.js', 'deploy-ftp.py',
-    'ftp-test.py', 'ftp-test2.py', 'ftp-test3.py',
+    'ftp-test.py', 'ftp-test2.py', 'ftp-test3.py', 'ftp-test-path.py',
     'ftp-deploy-out.txt', 'ftp-deploy-err.txt',
     '.gitignore', 'package-lock.json', '__pycache__',
     'ftp-err2.txt', 'ftp-err3.txt', 'ftp-err4.txt',
@@ -30,11 +30,13 @@ def curl_upload(local_file, remote_path):
         "--silent",
         "--show-error",
         "--ftp-create-dirs",
+        "--connect-timeout", "30",
+        "--max-time", "240",
         "-u", f"{FTP_USER}:{FTP_PASS}",
         "-T", local_file,
         url
     ]
-    result = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
+    result = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
     if result.returncode != 0:
         print(f"  ERROR: {result.stderr.strip()}")
         return False

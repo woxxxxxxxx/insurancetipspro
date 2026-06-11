@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "dependencies": {
     "@anthropic-ai/sdk": "^0.104.0",
-    "basic-ftp": "^6.0.1",
+    "basic-ftp": "^4.6.6",
     "node-fetch": "^3.3.2"
   }
 }
