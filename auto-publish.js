@@ -4,7 +4,6 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const { execSync, spawnSync } = require('child_process');
-const Anthropic = require('@anthropic-ai/sdk');
 
 // ─── Config ───────────────────────────────────────────────────────────────────
 const BASE_DIR = __dirname;
