@@ -215,7 +215,7 @@ img{max-width:100%;height:auto}
 .author-bio p{font-size:.85rem;color:var(--text2);margin:0}
 
 /* SIDEBAR */
-.sidebar{display:flex;flex-direction:column;gap:20px}
+.sidebar{display:flex;flex-direction:column;gap:12px}
 .sidebar-sticky{position:sticky;top:80px}
 .sidebar-widget{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:20px}
 .sidebar-widget h3{font-size:.85rem;font-weight:700;color:var(--navy);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border)}
@@ -453,7 +453,7 @@ img{max-width:100%;height:auto}
 /* AD SLOTS */
 .ad-unit{margin:24px 0;text-align:center;overflow:hidden !important;background:#f8fafc;border:2px dashed #d1d5db;border-radius:8px;padding:0;color:#9ca3af;font-size:13px;font-weight:500;letter-spacing:.5px;text-transform:uppercase;height:90px !important;min-height:90px !important;max-height:90px !important;display:flex;align-items:center;justify-content:center}
 .ad-unit::before{content:'Advertisement';display:block}
-.sidebar .ad-unit{margin:16px 0}
+.sidebar .ad-unit{margin:0}
 .ad-container,.advertisement-placeholder{height:90px !important;min-height:90px !important;max-height:90px !important;overflow:hidden !important}
 .ad-container{height:90px !important;min-height:90px !important;max-height:90px !important;overflow:hidden !important}
 .advertisement-placeholder{height:90px !important;min-height:90px !important;max-height:90px !important;overflow:hidden !important}
