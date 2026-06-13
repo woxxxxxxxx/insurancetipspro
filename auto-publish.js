@@ -575,17 +575,15 @@ function updateSitemap(slug, today) {
 
 // ─── FTP Deploy ───────────────────────────────────────────────────────────────
 function deploy() {
-  console.log('\n[5/5] Deploying via FTP (python deploy-ftp.py)...');
-  // node deploy-ftp.js has persistent TLS timeout issues; use Python directly
-  const py = spawnSync('python', ['deploy-ftp.py'], {
+  console.log('\n[5/5] Deploying via FTP (node deploy-ftp.js)...');
+  const result = spawnSync('node', [path.join(BASE_DIR, 'deploy-ftp.js')], {
     cwd: BASE_DIR,
     timeout: 600000,
     encoding: 'utf8',
     stdio: 'inherit',
   });
-  if (py.status !== 0) {
-    console.error('Python deploy failed (status ' + py.status + ')');
-    if (py.stderr) console.error(py.stderr.slice(0, 300));
+  if (result.status !== 0) {
+    console.error('FTP deploy failed (status ' + result.status + ')');
   } else {
     console.log('  FTP deploy complete');
   }
