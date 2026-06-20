@@ -37,7 +37,8 @@
     <div>
       <div class="content-section">
         <h2>Send a Message</h2>
-        <form class="contact-form" onsubmit="handleSubmit(event)">
+        <form class="contact-form" action="https://formspree.io/f/xyzgobkp" method="POST">
+          <input type="hidden" name="_subject" value="InsuranceTipsPro Contact Form">
           <div class="form-group">
             <label for="name">Your Name</label>
             <input type="text" id="name" name="name" placeholder="Jane Smith" required>
@@ -62,7 +63,7 @@
           </div>
           <button type="submit" class="submit-btn">Send Message</button>
         </form>
-        <p id="form-success" style="display:none;color:#16a34a;font-weight:600;margin-top:16px;padding:12px;background:#f0fdf4;border-radius:8px;">Thanks! We'll get back to you within 1-2 business days.</p>
+        <p style="margin-top:12px;color:#64748b;font-size:0.9rem;">You can also email us directly at <a href="mailto:contact@insurancetipspro.com" style="color:var(--navy);font-weight:600;">contact@insurancetipspro.com</a></p>
       </div>
     </div>
 
@@ -123,7 +124,7 @@
 <button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&#8679;</button>
 <script>
 document.getElementById('navToggle').addEventListener('click',()=>document.getElementById('mainNav').classList.toggle('open'));
-function handleSubmit(e){e.preventDefault();e.target.style.display='none';document.getElementById('form-success').style.display='block';}
+
 window.addEventListener('scroll',function(){document.getElementById('back-to-top').classList.toggle('visible',window.scrollY>300);});
 </script>
 </body>
