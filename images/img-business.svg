@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <rect width="600" height="400" fill="#f3e8ff"/>
+  <g transform="translate(300,170)" fill="none" stroke="#7c3aed" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="-45" y="-50" width="90" height="70" rx="4"/>
+    <rect x="-15" y="-70" width="30" height="20" rx="3"/>
+    <line x1="-45" y1="-20" x2="45" y2="-20"/>
+    <circle cx="0" cy="-5" r="6" fill="#7c3aed"/>
+  </g>
+  <text x="300" y="280" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#1a2744">Business Insurance</text>
+</svg>
