@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <rect width="600" height="400" fill="#fef2f2"/>
+  <g transform="translate(300,170)">
+    <path d="M0,40 C-60,-10 -60,-60 -30,-60 C-10,-60 0,-40 0,-40 C0,-40 10,-60 30,-60 C60,-60 60,-10 0,40 Z" fill="none" stroke="#dc2626" stroke-width="4"/>
+    <path d="M0,30 C-45,-5 -45,-45 -22,-45 C-8,-45 0,-30 0,-30 C0,-30 8,-45 22,-45 C45,-45 45,-5 0,30 Z" fill="#dc2626" opacity="0.15"/>
+  </g>
+  <text x="300" y="280" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#7f1d1d">Health Insurance</text>
+</svg>

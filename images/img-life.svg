@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <rect width="600" height="400" fill="#f0fdf4"/>
+  <g transform="translate(300,170)">
+    <path d="M0,-50 L30,-20 L30,30 L15,30 L15,50 L-15,50 L-15,30 L-30,30 L-30,-20 Z" fill="none" stroke="#16a34a" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M0,-25 L10,-15 L10,5 L-10,5 L-10,-15 Z" fill="#16a34a" opacity="0.3"/>
+  </g>
+  <text x="300" y="280" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#14532d">Life Insurance</text>
+</svg>

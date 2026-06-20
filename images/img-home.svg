@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <rect width="600" height="400" fill="#fff7ed"/>
+  <g transform="translate(300,170)" fill="none" stroke="#ea580c" stroke-width="4" stroke-linejoin="round">
+    <path d="M0,-50 L60,0 L50,0 L50,40 L-50,40 L-50,0 L-60,0 Z"/>
+    <rect x="-15" y="10" width="30" height="30" fill="#ea580c" opacity="0.15"/>
+    <rect x="-10" y="15" width="8" height="8" fill="#ea580c" opacity="0.3"/>
+    <rect x="2" y="15" width="8" height="8" fill="#ea580c" opacity="0.3"/>
+  </g>
+  <text x="300" y="280" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#7c2d12">Home Insurance</text>
+</svg>
