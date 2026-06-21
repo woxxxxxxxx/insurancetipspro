@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://insurancetipspro.com/</loc><lastmod>2025-06-09</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://insurancetipspro.com/about.html</loc><lastmod>2025-06-09</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://insurancetipspro.com/contact.html</loc><lastmod>2025-06-09</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://insurancetipspro.com/</loc><lastmod>2026-06-20</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://insurancetipspro.com/about.html</loc><lastmod>2026-06-20</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://insurancetipspro.com/contact.html</loc><lastmod>2026-06-20</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://insurancetipspro.com/privacy.html</loc><lastmod>2026-06-20</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://insurancetipspro.com/terms.html</loc><lastmod>2026-06-20</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
   <url><loc>https://insurancetipspro.com/articles/how-much-car-insurance-do-i-need.html</loc><lastmod>2025-06-05</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://insurancetipspro.com/articles/term-life-vs-whole-life-insurance.html</loc><lastmod>2025-06-04</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://insurancetipspro.com/articles/what-does-homeowners-insurance-cover.html</loc><lastmod>2025-06-03</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
@@ -26,8 +28,6 @@
   <url><loc>https://insurancetipspro.com/articles/how-to-read-insurance-policy.html</loc><lastmod>2026-06-09</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://insurancetipspro.com/articles/what-is-a-deductible-in-insurance.html</loc><lastmod>2026-06-09</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://insurancetipspro.com/articles/types-of-car-insurance-coverage.html</loc><lastmod>2026-06-11</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://insurancetipspro.com/articles/types-of-car-insurance-coverage.html</loc><lastmod>2026-06-11</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://insurancetipspro.com/articles/medicare-vs-private-health-insurance.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://insurancetipspro.com/articles/medicare-vs-private-health-insurance.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://insurancetipspro.com/articles/homeowners-insurance-vs-home-warranty.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://insurancetipspro.com/articles/gap-insurance-explained.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
@@ -38,4 +38,6 @@
   <url><loc>https://insurancetipspro.com/articles/how-insurance-premiums-are-calculated.html</loc><lastmod>2026-06-18</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://insurancetipspro.com/articles/boat-watercraft-insurance-guide.html</loc><lastmod>2026-06-19</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://insurancetipspro.com/articles/sr22-insurance-explained.html</loc><lastmod>2026-06-20</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://insurancetipspro.com/articles/renters-vs-homeowners-insurance.html</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://insurancetipspro.com/articles/best-insurance-books.html</loc><lastmod>2026-06-22</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
 </urlset>
