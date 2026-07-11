@@ -4,6 +4,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const { execSync, spawnSync } = require('child_process');
+const { generateJsonWithFallback } = require('../pm-worker/llm-json');
 
 // ─── Config ───────────────────────────────────────────────────────────────────
 const BASE_DIR = __dirname;
@@ -222,56 +223,11 @@ Requirements:
 - Include at least one link to https://coveragefixpro.com or a specific tool page there inside the article body
 - Return ONLY the JSON object, no other text`;
 
-  // Use claude CLI (already authenticated via Claude Code session)
-  console.log('  Calling claude CLI...');
-
-  return new Promise((resolve, reject) => {
-    const { spawn } = require('child_process');
-    const proc = spawn(
-      'claude',
-      [
-        '-p', prompt,
-        '--model', 'claude-sonnet-4-6',
-        '--dangerously-skip-permissions',
-        '--disallowed-tools', 'Bash,Edit,Write,Read,Glob,Grep,Agent,WebSearch,WebFetch',
-        '--system-prompt', 'You are a JSON content generator for an insurance website. Return ONLY valid JSON. Never use tools, never create files, never run shell commands, never commit to git.',
-      ],
-      { cwd: BASE_DIR }
-    );
-
-    let stdout = '';
-    let stderr = '';
-    proc.stdout.on('data', d => { stdout += d.toString(); });
-    proc.stderr.on('data', d => { stderr += d.toString(); });
-
-    proc.on('close', code => {
-      if (code !== 0) {
-        return reject(new Error('claude CLI failed (code ' + code + '): ' + stderr.slice(0, 400)));
-      }
-      const raw = stdout.trim();
-      if (!raw) return reject(new Error('claude CLI returned empty output. stderr: ' + stderr.slice(0, 200)));
-
-      // Strip markdown code fences if present
-      const stripped = raw.replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/, '').trim();
-      try {
-        resolve(JSON.parse(stripped));
-      } catch (e) {
-        const match = raw.match(/\{[\s\S]*\}/);
-        if (match) {
-          try { return resolve(JSON.parse(match[0])); } catch (e2) {}
-        }
-        reject(new Error('Failed to parse JSON: ' + e.message + '\nOutput start: ' + raw.slice(0, 400)));
-      }
-    });
-
-    proc.on('error', err => reject(new Error('spawn error: ' + err.message)));
-
-    // Timeout fallback (article generation can take 3-8 min for a full piece)
-    const timer = setTimeout(() => {
-      proc.kill();
-      reject(new Error('claude CLI timed out after 600s'));
-    }, 600000);
-    proc.on('close', () => clearTimeout(timer));
+  return generateJsonWithFallback(prompt, {
+    cwd: BASE_DIR,
+    claudeModel: 'claude-sonnet-4-6',
+    systemPrompt: 'You are a JSON content generator for an insurance website. Return ONLY valid JSON. Never use tools, never create files, never run shell commands, never commit to git.',
+    maxTokens: 12000,
   });
 }
 
@@ -300,6 +256,43 @@ function buildArticleHTML(topic, article, imageFilename, photographer, photograp
   const relatedHtml = article.relatedArticles.slice(0, 5).map((r, i) =>
     `        <div class="related-post"><div class="related-num">${i + 1}</div><a href="${r.href}">${r.title}</a></div>`
   ).join('\n');
+
+  const insightCards = article.keyTakeaways.slice(0, 3).map((t, i) => {
+    const labels = ['Coverage focus', 'Cost driver', 'Claim risk'];
+    return `          <div class="article-insight-card">
+            <span>${labels[i] || 'Key point'}</span>
+            <strong>${t.split(':')[0].replace(/\.$/, '')}</strong>
+            <p>${t}</p>
+          </div>`;
+  }).join('\n');
+
+  const checklistItems = article.tocItems.slice(0, 4).map((item, i) =>
+    `          <li><span>${i + 1}</span><a href="#${item.id}">${item.label}</a></li>`
+  ).join('\n');
+
+  const decisionComponents = `        <section class="article-insight-grid" aria-label="Insurance decision summary">
+${insightCards}
+        </section>
+
+        <section class="article-action-panel">
+          <div>
+            <span class="panel-kicker">Coverage checklist</span>
+            <h2>How to read this guide quickly</h2>
+            <p>Use the checklist below to understand what coverage does, where exclusions matter, and which cost factors deserve a closer look.</p>
+          </div>
+          <ol>
+${checklistItems}
+          </ol>
+        </section>
+
+        <section class="tool-strip">
+          <div>
+            <span>Free calculator</span>
+            <strong>Estimate coverage before comparing quotes</strong>
+            <p>Use CoverageFixPro to estimate costs and compare coverage options before you talk to an insurer.</p>
+          </div>
+          <a href="https://coveragefixpro.com" target="_blank" rel="sponsored nofollow noopener">Open calculator</a>
+        </section>`;
 
   const photoCredit = photographer
     ? `<!-- Photo by <a href="${photographerUrl}?utm_source=insurancetipspro&utm_medium=referral" target="_blank" rel="noopener">${photographer}</a> on <a href="https://unsplash.com/?utm_source=insurancetipspro&utm_medium=referral" target="_blank" rel="noopener">Unsplash</a> -->`
@@ -381,7 +374,7 @@ function buildArticleHTML(topic, article, imageFilename, photographer, photograp
     <a href="/" class="site-logo"><img src="/logo.svg" alt="${SITE_NAME}" style="display:block;height:36px;width:auto;" loading="eager"></a>
     <nav class="site-nav" id="mainNav">
       <a href="/">Home</a><a href="/about.html">About</a><a href="/contact.html">Contact</a>
-      <a href="https://coveragefixpro.com" target="_blank" rel="noopener">Calculators</a>
+      <a href="https://coveragefixpro.com" target="_blank" rel="sponsored nofollow noopener">Calculators</a>
     </nav>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
   </div>
@@ -424,6 +417,8 @@ ${tocHtml}
       <div class="article-body">
         <p>${article.intro}</p>
 
+${decisionComponents}
+
 ${sectionsHtml}
       </div>
 
@@ -432,7 +427,7 @@ ${sectionsHtml}
       <div class="cta-section">
         <h3>Use Our Free Insurance Calculators</h3>
         <p>Get instant estimates and compare coverage options with our free tools.</p>
-        <a href="https://coveragefixpro.com" target="_blank" rel="noopener" class="cta-btn">Visit CoverageFixPro.com &rarr;</a>
+        <a href="https://coveragefixpro.com" target="_blank" rel="sponsored nofollow noopener" class="cta-btn">Visit CoverageFixPro.com &rarr;</a>
       </div>
 
       <div class="faq-section">
@@ -465,7 +460,7 @@ ${relatedHtml}
       <div class="sidebar-cta">
   <h3>Free Quote Tools</h3>
   <p>Estimate your costs and find the right coverage options for free.</p>
-  <a href="https://coveragefixpro.com" target="_blank" rel="noopener">Try Free Calculators &rarr;</a>
+  <a href="https://coveragefixpro.com" target="_blank" rel="sponsored nofollow noopener">Try Free Calculators &rarr;</a>
 </div>
     </div></aside>
   </div>
@@ -488,7 +483,7 @@ ${relatedHtml}
       <div class="footer-col"><h4>Resources</h4><ul>
         <li><a href="/articles/insurance-terms-glossary.html">Insurance Glossary</a></li>
         <li><a href="/articles/how-to-compare-insurance-quotes.html">Compare Quotes</a></li>
-        <li><a href="https://coveragefixpro.com" target="_blank" rel="noopener">Free Calculators</a></li>
+        <li><a href="https://coveragefixpro.com" target="_blank" rel="sponsored nofollow noopener">Free Calculators</a></li>
       </ul></div>
     </div>
     <div class="footer-editorial">
@@ -513,7 +508,7 @@ document.querySelectorAll('.faq-question').forEach(btn=>{btn.addEventListener('c
   if(!target)return;
   var cta=document.createElement('div');
   cta.className='inline-cta';
-  cta.innerHTML='<div class="inline-cta-text"><strong>Need to compare insurance options?</strong><span>Use our free calculators to estimate costs and find the right coverage for your situation.</span></div><a href="https://coveragefixpro.com" target="_blank" rel="noopener" class="btn-orange-sm">Free Quote Tools &rarr;</a>';
+  cta.innerHTML='<div class="inline-cta-text"><strong>Need to compare insurance options?</strong><span>Use our free calculators to estimate costs and find the right coverage for your situation.</span></div><a href="https://coveragefixpro.com" target="_blank" rel="sponsored nofollow noopener" class="btn-orange-sm">Free Quote Tools &rarr;</a>';
   target.parentNode.insertBefore(cta,target.nextSibling);
 })();
 </script>
@@ -603,10 +598,9 @@ function deploy() {
     stdio: 'inherit',
   });
   if (result.status !== 0) {
-    console.error('FTP deploy failed (status ' + result.status + ')');
-  } else {
-    console.log('  FTP deploy complete');
+    throw new Error('FTP deploy failed (status ' + result.status + ')');
   }
+  console.log('  FTP deploy complete');
 }
 
 // ─── Main ─────────────────────────────────────────────────────────────────────
@@ -638,7 +632,7 @@ async function main() {
   }
 
   // Step 2: Generate article content
-  console.log('\n[2/5] Generating article with Anthropic API...');
+  console.log('\n[2/5] Generating article with DeepSeek API...');
   const article = await generateArticle(topic, imageFilename, today);
   console.log('  Title:', article.title);
   console.log('  Sections:', article.sections.length);
@@ -659,6 +653,7 @@ async function main() {
   updateSitemap(topic.slug, today);
 
   // Step 5: Deploy
+  require('../pm-worker/adsense-preflight-remediate').remediateSite(BASE_DIR, 'insurancetipspro');
   deploy();
 
   // Step 6: Save topic as used

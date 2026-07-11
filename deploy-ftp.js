@@ -23,7 +23,24 @@ const EXCLUDE = new Set([
   'node_modules', '.git', '.gitignore', 'deploy-ftp.js', 'deploy-cache.json',
   'auto-publish.js', '.env', 'AGENTS.md', 'CLAUDE.md',
   'package.json', 'package-lock.json', 'topics-used.json', 'deploy-ftp.py',
+  'fix-svg-images.js', 'use-local-images.py', 'improve-articles.py',
 ]);
+
+const REMOTE_CLEANUP = [
+  '/public_html/auto-publish.js',
+  '/public_html/topics-used.json',
+  '/public_html/package.json',
+  '/public_html/package-lock.json',
+  '/public_html/deploy-cache.json',
+  '/public_html/deploy-ftp.js',
+  '/public_html/deploy-ftp.py',
+  '/public_html/fix-svg-images.js',
+  '/public_html/use-local-images.py',
+  '/public_html/improve-articles.py',
+  '/public_html/AGENTS.md',
+  '/public_html/CLAUDE.md',
+  '/public_html/.env',
+];
 
 // ─── Cache ────────────────────────────────────────────────────────────────────
 function loadCache() {
@@ -127,6 +144,21 @@ async function ensureRemoteDirs(client, files) {
   }
 }
 
+async function cleanupRemoteFiles(cache) {
+  const client = await createClient();
+  try {
+    for (const remotePath of REMOTE_CLEANUP) {
+      try {
+        await client.remove(remotePath);
+        delete cache.files[remotePath];
+        console.log(`  cleanup removed ${remotePath}`);
+      } catch (_) {}
+    }
+  } finally {
+    client.close();
+  }
+}
+
 // ─── Live site check ──────────────────────────────────────────────────────────
 function checkLiveSite(url) {
   return new Promise(resolve => {
@@ -146,8 +178,12 @@ async function deploy() {
   console.log(`  Unchanged (skip): ${skipped.length}`);
   console.log(`  To upload:        ${toUpload.length}`);
 
+  console.log('\nCleaning remote-only private/build files...');
+  await cleanupRemoteFiles(cache);
+
   if (toUpload.length === 0) {
     console.log('\nAll files up to date — nothing to upload.');
+    saveCache(cache);
     runPostDeployCheck(SITE_NAME);
     return;
   }

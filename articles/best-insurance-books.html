@@ -53,8 +53,44 @@
   ]
 }
 </script>
+<!-- Amazon OneLink: auto-redirect international visitors to local Amazon -->
+<script src="//affiliate-program.amazon.com/onelink-sa-aax/onelink.min.js"></script>
+<script>
+  amzn_associates_link_init = {
+    instanceId: 'bizpolicyguid-20',
+    domain: 'auto'
+  };
+</script>
+<!-- Manual OneLink fallback: detects visitor country via timezone and rewrites amazon.com links -->
+<script>
+(function() {
+  var tz = (Intl.DateTimeFormat().resolvedOptions().timeZone) || '';
+  var regionMap = {
+    'Europe/London': 'co.uk', 'Europe/Berlin': 'de', 'Europe/Paris': 'fr',
+    'Europe/Rome': 'it', 'Europe/Madrid': 'es', 'Europe/Amsterdam': 'nl',
+    'Europe/Stockholm': 'se', 'Europe/Warsaw': 'pl', 'America/Toronto': 'ca',
+    'America/Vancouver': 'ca', 'America/Montreal': 'ca'
+  };
+  var localDomain = regionMap[tz];
+  if (!localDomain) return;
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('a[href*="amazon.com/dp/"]').forEach(function(a) {
+      a.href = a.href.replace('amazon.com', 'amazon.' + localDomain);
+    });
+  });
+})();
+</script>
+<style>
+  .editorial-review-note{margin:2rem 0;padding:1.25rem 1.4rem;border:1px solid #d9e2ec;border-left:4px solid #2563eb;background:#f8fafc;border-radius:6px;color:#243447}
+  .editorial-review-note h2{font-size:1.25rem;margin:.2rem 0 .65rem;letter-spacing:0}
+  .editorial-review-note p,.editorial-review-note li{font-size:.98rem;line-height:1.65}
+  .editorial-review-note .editorial-kicker{font-size:.74rem;font-weight:800;color:#2563eb;margin:0;letter-spacing:.08em}
+  </style>
+<meta name="twitter:card" content="summary_large_image">
+<style>.portfolio-skip-link{position:fixed;left:12px;top:12px;z-index:10000;padding:.65rem .9rem;background:#111827;color:#fff;border-radius:4px;transform:translateY(-160%)}.portfolio-skip-link:focus{transform:none}</style>
 </head>
 <body>
+<a class="portfolio-skip-link" href="#main-content">Skip to main content</a>
 <div id="read-progress"></div>
 
 <header class="site-header">
@@ -68,7 +104,7 @@
   </div>
 </header>
 
-<main class="container main-content">
+<main class="container main-content" id="main-content">
   <div class="breadcrumb"><a href="/">Home</a><span>&rsaquo;</span>8 Best Insurance &amp; Personal Finance Books for 2026</div>
   <div class="content-grid">
     <article>
@@ -251,7 +287,19 @@
         <div class="author-avatar">IT</div>
         <div><h4>InsuranceTipsPro Editorial Team</h4><p>Our team of insurance researchers and writers provides unbiased, educational content to help consumers make smarter coverage decisions.</p></div>
       </div>
-    </article>
+    
+  <section class="editorial-review-note" aria-label="Editorial review note">
+    <p class="editorial-kicker">EDITORIAL REVIEW</p>
+    <h2>How this page was checked</h2>
+    <p>InsuranceTipsPro reviews this page for factual clarity, buyer relevance, and limitations. Product features, prices, rules, and availability can change, so readers should confirm material decisions with the provider or relevant government agency.</p>
+    <ul>
+      <li><strong>Ownership:</strong> InsuranceTipsPro editorial desk.</li>
+      <li><strong>Evidence standard:</strong> official product pages, pricing pages, government guidance, and clearly labeled editorial analysis.</li>
+      <li><strong>Scope:</strong> educational comparison of consumer insurance education; not individualized legal, tax, accounting, insurance, medical, or financial advice.</li>
+    </ul>
+    <p><a href="../editorial-policy.html">Editorial policy</a></p>
+  </section>
+</article>
 
     <aside class="sidebar"><div class="sidebar-sticky">
       <div class="sidebar-widget">
