@@ -18,6 +18,7 @@ const CONCURRENCY = 5;
 const RETRY_MAX   = 3;
 const RETRY_DELAY = 5000;
 const CACHE_FILE  = path.join(__dirname, 'deploy-cache.json');
+const ONLY_FILES  = new Set(process.argv.slice(2).map(file => file.replace(/\\/g, '/').replace(/^\.\//, '')));
 
 const EXCLUDE = new Set([
   'node_modules', '.git', '.gitignore', 'deploy-ftp.js', 'deploy-cache.json',
@@ -93,6 +94,8 @@ function collectFiles(localDir, remoteDir, cache) {
       if (stat.isDirectory()) {
         walk(localPath, remotePath);
       } else {
+        const relativePath = path.relative(localDir, localPath).replace(/\\/g, '/');
+        if (ONLY_FILES.size && !ONLY_FILES.has(relativePath)) continue;
         const mtime = stat.mtimeMs;
         if (!cache.files[remotePath] || mtime > cache.files[remotePath]) {
           toUpload.push({ localPath, remotePath, mtime });
